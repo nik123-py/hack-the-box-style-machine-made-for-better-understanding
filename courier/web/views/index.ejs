@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courier CI/CD Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+        .header {
+            border-bottom: 2px solid #4a9eff;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        .section {
+            background: #2a2a2a;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        button {
+            background: #4a9eff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+        button:hover {
+            background: #3a8eef;
+        }
+        pre {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+        #webhook-results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Courier CI/CD Platform</h1>
+        <p>Automated build and deployment system</p>
+    </div>
+
+    <div class="section">
+        <h2>Webhook Trigger</h2>
+        <p>Trigger a CI build via webhook:</p>
+        <button onclick="triggerBuild()">Trigger Build</button>
+        <div id="webhook-results"></div>
+    </div>
+
+    <div class="section">
+        <h2>About</h2>
+        <p>This platform automates CI/CD workflows for internal applications.</p>
+        <p>Use the webhook endpoint to trigger automated builds.</p>
+    </div>
+
+    <script src="/main.js"></script>
+    <script>
+        async function triggerBuild() {
+            const resultsDiv = document.getElementById('webhook-results');
+            resultsDiv.innerHTML = '<p>Triggering webhook...</p>';
+            
+            const data = await triggerWebhook('push', { name: 'internal-app' });
+            displayWebhookResults(data);
+        }
+    </script>
+</body>
+</html>
+
